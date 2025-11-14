@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Contact(){
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [toasts, setToasts] = useState([])
+
+  const pushToast = (type, text)=>{
+    const id = Date.now() + Math.random()
+    setToasts(t => [...t, { id, type, text }])
+    setTimeout(()=> setToasts(t => t.filter(x => x.id !== id)), 3000)
+  }
+
+  const onSubmit = (e)=>{
+    e.preventDefault()
+    if(!name || !email || !message){
+      pushToast('error', 'Please fill all fields')
+      return
+    }
+    pushToast('success', 'Accepted! Your request submitted successfully')
+    setName('')
+    setEmail('')
+    setMessage('')
+  }
+
   return (
     <section className="relative border-b">
       <div className="absolute inset-0">
@@ -20,12 +43,20 @@ export default function Contact(){
             <li>Hours: Mon–Fri 9:00–18:00</li>
           </ul>
         </div>
-        <form className="card grid gap-3">
-          <input placeholder="Your name" className="border rounded px-3 py-2"/>
-          <input placeholder="Your email" className="border rounded px-3 py-2"/>
-          <textarea placeholder="Message" rows="4" className="border rounded px-3 py-2"/>
+        <form onSubmit={onSubmit} className="card grid gap-3">
+          <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Your name" className="border rounded px-3 py-2"/>
+          <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Your email" className="border rounded px-3 py-2"/>
+          <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="Message" rows="4" className="border rounded px-3 py-2"/>
           <button className="btn-primary w-max">Send</button>
         </form>
+      </div>
+
+      <div className="fixed top-4 right-4 z-50 space-y-2">
+        {toasts.map(t => (
+          <div key={t.id} className={`px-4 py-2 rounded shadow text-white ${t.type === 'error' ? 'bg-red-600' : 'bg-green-600'}`}>
+            {t.text}
+          </div>
+        ))}
       </div>
     </section>
   )
