@@ -210,5 +210,5 @@ Deploy suggestions
 - Use meaningful commit messages
 
 
-## License @Pritam
+## License @Pritam#
 This project is provided as-is for demonstration and educational purposes. Add a license if you plan to distribute.
