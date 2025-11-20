@@ -15,30 +15,46 @@ import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 dotenv.config();
 const app = express();
 
-// CORS configuration
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    // Allow all origins in development, or specific origins in production
-    const allowedOrigins = process.env.ALLOWED_ORIGINS 
-      ? process.env.ALLOWED_ORIGINS.split(',')
-      : ['*'];
-    
-    if (allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(null, true); // Allow all for now, can be restricted later
+// CORS configuration - Fully permissive for development
+// In production, set ALLOWED_ORIGINS env var to restrict origins
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  
+  // Allow all origins for now (can be restricted via env var)
+  if (origin || !process.env.ALLOWED_ORIGINS) {
+    res.header('Access-Control-Allow-Origin', origin || '*');
+  } else {
+    const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
+    if (allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+      res.header('Access-Control-Allow-Origin', origin);
     }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-  exposedHeaders: ['Authorization']
-};
+  }
+  
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD');
+  // Allow all headers that the client requests
+  const requestedHeaders = req.headers['access-control-request-headers'];
+  if (requestedHeaders) {
+    res.header('Access-Control-Allow-Headers', requestedHeaders);
+  } else {
+    // Default headers
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Cache-Control, Pragma, Accept, Origin');
+  }
+  res.header('Access-Control-Expose-Headers', 'Authorization');
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  
+  next();
+});
 
-app.use(cors(corsOptions));
+// Also use cors middleware as fallback
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 app.use(express.json());
 app.use(morgan('dev'));
 
