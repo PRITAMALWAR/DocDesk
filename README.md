@@ -1,4 +1,4 @@
-# 🏥 DocDesk - Doctor Appointment Platform
+# DocDesk - Doctor Appointment Platform
 
 <div align="center">
 
@@ -11,27 +11,6 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 </div>
-
----
-
-## 📋 Table of Contents
-
-- [About](#-about)
-- [Features](#-features)
-- [Live Demo](#-live-demo)
-- [Technologies Used](#-technologies-used)
-- [Project Structure](#-project-structure)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [Usage](#-usage)
-- [API Documentation](#-api-documentation)
-- [Screenshots](#-screenshots)
-- [Deployment](#-deployment)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Contact](#-contact)
-
----
 
 ## 🎯 About
 
