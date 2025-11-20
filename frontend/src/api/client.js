@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000'
+const BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5025'
 
 export const api = async (path, { method = 'GET', body, token, headers = {} } = {}) => {
   let url = `${BASE}${path}`
