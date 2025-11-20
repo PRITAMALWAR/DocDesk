@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![DocDesk Logo](https://via.placeholder.com/200x60/3B82F6/FFFFFF?text=DocDesk)
-
 **A modern, full-stack web application for managing doctor appointments, medical history, and patient-doctor interactions.**
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Frontend-3B82F6?style=for-the-badge)](https://docdesk-frontend.onrender.com/)
