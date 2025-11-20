@@ -119,8 +119,8 @@ export default function BookAppointment(){
           {user && user.role !== 'patient' && (
             <div className="mb-4 text-sm rounded p-3 border bg-amber-50 text-amber-800 border-amber-200">Only patients can book appointments. Please log in as a patient.</div>
           )}
-          <form onSubmit={submit} className="card p-6 grid md:grid-cols-3 gap-4">
-            <div>
+          <form onSubmit={submit} className="card p-4 sm:p-6 grid md:grid-cols-3 gap-4">
+            <div className="md:col-span-1">
               <label className="block text-sm text-gray-700">Doctor</label>
               <select value={form.doctorId} onChange={(e)=>setForm(f=>({...f, doctorId: e.target.value, time: '' }))} className="w-full border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-500">
                 <option value="">Select a doctor</option>
@@ -129,7 +129,7 @@ export default function BookAppointment(){
                 ))}
               </select>
             </div>
-            <div>
+            <div className="md:col-span-1">
               <label className="block text-sm text-gray-700">Date</label>
               <input type="date" min={today} value={form.date} onChange={(e)=>{
                 const v = e.target.value
@@ -137,13 +137,13 @@ export default function BookAppointment(){
                 setForm(f=>({...f, date: v, time: '', weekday: autoW }))
               }} className="w-full border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-primary-500"/>
             </div>
-            <div>
+            <div className="md:col-span-1">
               <label className="block text-sm text-gray-700">Weekday</label>
               <div className="mt-1 flex flex-wrap gap-2">
                 {weekdayOptions.map(dy => {
                   const active = form.weekday === dy
                   return (
-                    <button type="button" key={dy} onClick={()=> setForm(f=>({...f, weekday: dy, time: ''}))} className={`px-3 py-1 rounded-full border text-sm ${active ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-700 hover:bg-gray-50 border-gray-300'}`}>{dy}</button>
+                    <button type="button" key={dy} onClick={()=> setForm(f=>({...f, weekday: dy, time: ''}))} className={`px-2 sm:px-3 py-1 rounded-full border text-xs sm:text-sm ${active ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-700 hover:bg-gray-50 border-gray-300'}`}>{dy}</button>
                   )
                 })}
               </div>
@@ -151,7 +151,7 @@ export default function BookAppointment(){
                 <div className="mt-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1">Selected weekday does not match the chosen date.</div>
               )}
             </div>
-            <div>
+            <div className="md:col-span-1">
               <label className="block text-sm text-gray-700">Time</label>
               <select
                 value={form.time}
@@ -167,7 +167,7 @@ export default function BookAppointment(){
             </div>
             {/* Summary */}
             <div className="md:col-span-3">
-              <div className="mt-2 p-4 rounded-xl border bg-gray-50 text-sm text-gray-700 flex flex-wrap gap-4">
+              <div className="mt-2 p-3 sm:p-4 rounded-xl border bg-gray-50 text-sm text-gray-700 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
                 <div><span className="text-gray-500">Doctor:</span> <span className="font-medium">{selectedDoctor ? (selectedDoctor.user?.name || '—') : '—'}</span></div>
                 <div><span className="text-gray-500">Date:</span> <span className="font-medium">{form.date || '—'}</span></div>
                 <div><span className="text-gray-500">Weekday:</span> <span className="font-medium">{selectedWeekday || '—'}</span></div>
@@ -175,7 +175,7 @@ export default function BookAppointment(){
               </div>
             </div>
             <div className="md:col-span-3 flex justify-end">
-              <button className="btn-primary disabled:opacity-60" disabled={submitting || !form.doctorId || !form.date || !form.weekday || !form.time || (user && user.role !== 'patient') || (form.date && form.weekday && weekdayShort(form.date) !== form.weekday)}>{submitting ? 'Booking...' : 'Confirm Booking'}</button>
+              <button className="btn-primary w-full sm:w-auto disabled:opacity-60" disabled={submitting || !form.doctorId || !form.date || !form.weekday || !form.time || (user && user.role !== 'patient') || (form.date && form.weekday && weekdayShort(form.date) !== form.weekday)}>{submitting ? 'Booking...' : 'Confirm Booking'}</button>
             </div>
           </form>
         </div>

@@ -34,20 +34,20 @@ export default function Contact(){
         />
         <div className="absolute inset-0 bg-white/80"/>
       </div>
-      <div className="container relative py-12 grid md:grid-cols-2 gap-10 items-center">
+      <div className="container relative py-8 sm:py-12 px-4 sm:px-6 grid md:grid-cols-2 gap-6 sm:gap-10 items-start md:items-center">
         <div>
-          <h2 className="text-3xl font-bold">Contact Us</h2>
-          <p className="text-gray-700 mt-2">Have questions? Reach out and we will get back to you.</p>
-          <ul className="mt-6 space-y-2 text-gray-800">
+          <h2 className="text-2xl sm:text-3xl font-bold">Contact Us</h2>
+          <p className="text-gray-700 mt-2 text-sm sm:text-base">Have questions? Reach out and we will get back to you.</p>
+          <ul className="mt-4 sm:mt-6 space-y-2 text-gray-800 text-sm sm:text-base">
             <li>Email: support@docdesk.local</li>
             <li>Hours: Mon–Fri 9:00–18:00</li>
           </ul>
         </div>
-        <form onSubmit={onSubmit} className="card grid gap-3">
-          <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Your name" className="border rounded px-3 py-2"/>
-          <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Your email" className="border rounded px-3 py-2"/>
-          <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="Message" rows="4" className="border rounded px-3 py-2"/>
-          <button className="btn-primary w-max">Send</button>
+        <form onSubmit={onSubmit} className="card grid gap-3 p-4 sm:p-6">
+          <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Your name" className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"/>
+          <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Your email" className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"/>
+          <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="Message" rows="4" className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"/>
+          <button className="btn-primary w-full sm:w-auto">Send</button>
         </form>
       </div>
 

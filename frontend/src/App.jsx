@@ -21,6 +21,7 @@ import DoctorAvailability from './pages/doctor/Availability'
 import DoctorFeedback from './pages/doctor/Feedback'
 import DoctorList from './pages/DoctorList'
 import PublicDoctorProfile from './pages/PublicDoctorProfile'
+import SubmitFeedback from './pages/SubmitFeedback'
 import { AuthProvider, useAuth } from './context/AuthContext'
 
 const ProtectedRoute = ({ children }) => {
@@ -50,6 +51,7 @@ export default function App() {
             <Route path="/medical-history" element={<ProtectedRoute><MedicalHistory /></ProtectedRoute>} />
             <Route path="/doctors" element={<DoctorList />} />
             <Route path="/doctors/:id" element={<PublicDoctorProfile />} />
+            <Route path="/feedback/:doctorId" element={<ProtectedRoute><SubmitFeedback /></ProtectedRoute>} />
             <Route path="/doctor" element={<DoctorRoute><DoctorLayout /></DoctorRoute>}>
               <Route index element={<DoctorDashboard />} />
               <Route path="home" element={<DoctorDashboard />} />

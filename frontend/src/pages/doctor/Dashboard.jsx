@@ -37,32 +37,32 @@ export default function DoctorDashboard(){
   },[])
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">Dashboard</h1>
         <button className="px-3 py-2 border rounded-lg text-sm" onClick={load}>Refresh</button>
       </div>
       {loading ? (
-        <div className="bg-white border rounded-2xl p-5 shadow-sm">Loading...</div>
+        <div className="bg-white border rounded-2xl p-4 sm:p-5 shadow-sm text-center">Loading...</div>
       ) : error ? (
-        <div className="bg-white border rounded-2xl p-5 shadow-sm text-red-600">{error}</div>
+        <div className="bg-white border rounded-2xl p-4 sm:p-5 shadow-sm text-red-600">{error}</div>
       ) : (
-        <div className="grid md:grid-cols-4 gap-4">
-          <div className="bg-white border rounded-2xl p-5 shadow-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-white border rounded-2xl p-4 sm:p-5 shadow-sm">
             <div className="text-sm text-gray-500">Total Appointments</div>
-            <div className="mt-2 text-3xl font-semibold">{kpi.total}</div>
+            <div className="mt-2 text-2xl sm:text-3xl font-semibold">{kpi.total}</div>
           </div>
-          <div className="bg-white border rounded-2xl p-5 shadow-sm">
+          <div className="bg-white border rounded-2xl p-4 sm:p-5 shadow-sm">
             <div className="text-sm text-gray-500">Patients</div>
-            <div className="mt-2 text-3xl font-semibold">{kpi.patients}</div>
+            <div className="mt-2 text-2xl sm:text-3xl font-semibold">{kpi.patients}</div>
           </div>
-          <div className="bg-white border rounded-2xl p-5 shadow-sm">
+          <div className="bg-white border rounded-2xl p-4 sm:p-5 shadow-sm">
             <div className="text-sm text-gray-500">Earnings</div>
-            <div className="mt-2 text-3xl font-semibold">₹{kpi.earnings}</div>
+            <div className="mt-2 text-2xl sm:text-3xl font-semibold">₹{kpi.earnings}</div>
           </div>
-          <div className="bg-white border rounded-2xl p-5 shadow-sm">
+          <div className="bg-white border rounded-2xl p-4 sm:p-5 shadow-sm">
             <div className="text-sm text-gray-500">Avg Rating</div>
-            <div className="mt-2 text-3xl font-semibold">{kpi.rating || '-'}<span className="text-base text-gray-500">/5</span></div>
+            <div className="mt-2 text-2xl sm:text-3xl font-semibold">{kpi.rating || '-'}<span className="text-base text-gray-500">/5</span></div>
           </div>
         </div>
       )}

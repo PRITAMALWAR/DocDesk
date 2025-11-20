@@ -83,8 +83,8 @@ export default function Signup(){
   }
 
   return (
-    <div className="min-h-screen flex items-start justify-center bg-gradient-to-b from-white to-gray-50 p-6">
-      <div className="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
+    <div className="min-h-screen flex items-start justify-center bg-gradient-to-b from-white to-gray-50 p-4 sm:p-6">
+      <div className="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-100">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">Create your account</h2>
           <p className="text-gray-600 mt-1">Join DocDesk in seconds</p>

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { api } from '../api/client'
 import { Link } from 'react-router-dom'
+import StarRating from '../components/StarRating'
 
 const SPECIALTIES = ['Cardiologist','Dermatologist','Dentist','Neurologist']
 
@@ -92,10 +93,16 @@ export default function DoctorList(){
                 <div key={d._id} className="bg-white border rounded-2xl p-5 shadow-sm flex flex-col">
                   <div className="flex items-center gap-4">
                     <img src={d.profilePhoto || 'https://via.placeholder.com/64'} alt="doc" className="w-16 h-16 rounded-full object-cover border"/>
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <div className="font-semibold text-gray-900 truncate">{d?.user?.name || 'Doctor'}</div>
                       <div className="text-sm text-gray-600 truncate">{d.specialty}</div>
-                      <div className="text-xs text-gray-500">{typeof d.rating==='number' ? `${Math.round(d.rating*10)/10}/5` : '-'} · {d.ratingCount||0} reviews</div>
+                      <div className="mt-1 flex items-center gap-2">
+                        <StarRating rating={d.rating || 0} readonly size="sm" />
+                        <span className="text-xs text-gray-600">
+                          {typeof d.rating==='number' ? `${Math.round(d.rating*10)/10}` : '0'}/5
+                        </span>
+                        <span className="text-xs text-gray-500">({d.ratingCount||0})</span>
+                      </div>
                     </div>
                   </div>
                   <div className="mt-4 text-sm text-gray-700 space-y-1">

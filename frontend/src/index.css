@@ -7,6 +7,6 @@
 }
 
 body { @apply text-gray-800; }
-.container { @apply max-w-7xl mx-auto px-4; }
-.btn-primary { @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold px-4 py-2 rounded-md transition; }
-.card { @apply bg-white shadow rounded-lg p-6; }
+.container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+.btn-primary { @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold px-4 py-2 rounded-md transition text-sm sm:text-base; }
+.card { @apply bg-white shadow rounded-lg p-4 sm:p-6; }

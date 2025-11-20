@@ -46,14 +46,14 @@ export default function DoctorRequests(){
           <div className="divide-y">
             {pending.length===0 && <div className="p-5 text-gray-600">No pending requests</div>}
             {pending.map(ap => (
-              <div key={ap._id} className="p-4 flex items-center justify-between">
-                <div className="min-w-0">
+              <div key={ap._id} className="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="min-w-0 flex-1">
                   <div className="font-medium text-gray-900 truncate">{ap?.patient?.name || 'Patient'}</div>
                   <div className="text-sm text-gray-600">{ap.date?.slice(0,10)} · {ap.time}</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button className="px-3 py-1 rounded-lg bg-green-600 text-white text-sm" onClick={()=>act(ap._id,'confirmed')}>Approve</button>
-                  <button className="px-3 py-1 rounded-lg bg-red-600 text-white text-sm" onClick={()=>act(ap._id,'cancelled')}>Reject</button>
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <button className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-green-600 text-white text-sm hover:bg-green-700" onClick={()=>act(ap._id,'confirmed')}>Approve</button>
+                  <button className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-red-600 text-white text-sm hover:bg-red-700" onClick={()=>act(ap._id,'cancelled')}>Reject</button>
                 </div>
               </div>
             ))}

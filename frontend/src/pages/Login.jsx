@@ -37,8 +37,8 @@ export default function Login(){
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 p-6">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 p-4 sm:p-6">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-6 sm:p-8 border border-gray-100">
         <div className="text-center">
           <div className="flex items-center justify-center gap-3">
             {logo && <img src={logo} alt={brand} className="w-10 h-10 object-contain"/>}

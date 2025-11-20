@@ -130,17 +130,17 @@ export default function DoctorProfile(){
     }
   }
 
-  if (loading) return <div className="container py-10">Loading...</div>
-  if (error) return <div className="container py-10 text-red-600">{error}</div>
+  if (loading) return <div className="container py-6 sm:py-10 px-4 sm:px-6">Loading...</div>
+  if (error) return <div className="container py-6 sm:py-10 px-4 sm:px-6 text-red-600">{error}</div>
 
   if (noProfile) {
     return (
-      <div className="container py-8">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-semibold text-gray-900">Create Doctor Profile</h1>
-          <button className="btn-primary" onClick={createProfile}>Create Profile</button>
+      <div className="container py-6 sm:py-8 px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-3">
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">Create Doctor Profile</h1>
+          <button className="btn-primary w-full sm:w-auto" onClick={createProfile}>Create Profile</button>
         </div>
-        <div className="bg-white border rounded-2xl shadow-sm p-6 grid md:grid-cols-3 gap-6">
+        <div className="bg-white border rounded-2xl shadow-sm p-4 sm:p-6 grid md:grid-cols-3 gap-4 sm:gap-6">
           <div className="md:col-span-1 flex flex-col items-center">
             <img src={(form.profilePhoto || 'https://via.placeholder.com/160')} alt="profile" className="w-32 h-32 rounded-full object-cover border"/>
             <input className="mt-3 w-full border rounded-lg px-3 py-2" placeholder="Profile photo URL" value={form.profilePhoto} onChange={(e)=>setForm(f=>({...f, profilePhoto: e.target.value}))} />
@@ -253,20 +253,20 @@ export default function DoctorProfile(){
   }
 
   return (
-    <div className="container py-8">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold text-gray-900">My Doctor Profile</h1>
+    <div className="container py-6 sm:py-8 px-4 sm:px-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-3">
+        <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">My Doctor Profile</h1>
         {!edit ? (
-          <button className="btn-primary" onClick={()=>setEdit(true)}>Edit Profile</button>
+          <button className="btn-primary w-full sm:w-auto" onClick={()=>setEdit(true)}>Edit Profile</button>
         ) : (
-          <div className="flex gap-3">
-            <button className="btn-primary" onClick={save}>Save</button>
-            <button className="px-4 py-2 rounded-lg border" onClick={()=>{ setEdit(false); load() }}>Cancel</button>
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <button className="btn-primary w-full sm:w-auto" onClick={save}>Save</button>
+            <button className="px-4 py-2 rounded-lg border w-full sm:w-auto" onClick={()=>{ setEdit(false); load() }}>Cancel</button>
           </div>
         )}
       </div>
 
-      <div className="bg-white border rounded-2xl shadow-sm p-6 grid md:grid-cols-3 gap-6">
+      <div className="bg-white border rounded-2xl shadow-sm p-4 sm:p-6 grid md:grid-cols-3 gap-4 sm:gap-6">
         <div className="md:col-span-1 flex flex-col items-center">
           <img src={edit ? (form.profilePhoto || 'https://via.placeholder.com/160') : (profile.profilePhoto || 'https://via.placeholder.com/160')} alt="profile" className="w-32 h-32 rounded-full object-cover border"/>
           {edit && (
