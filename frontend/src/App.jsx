@@ -9,7 +9,6 @@ import AllAppointments from './pages/AllAppointments'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import NotFound from './pages/NotFound'
 import MedicalHistory from './pages/MedicalHistory'
 import DoctorProfile from './pages/DoctorProfile'
 import DoctorLayout from './layouts/DoctorLayout'
@@ -65,7 +64,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <Footer />
