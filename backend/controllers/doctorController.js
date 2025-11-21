@@ -65,7 +65,6 @@ export const upsertMyDoctorProfile = async (req, res) => {
     timeSlots
   } = req.body;
 
-  // Build availability from availableDays + timeSlots (array of strings HH:MM)
   let availability = undefined;
   if (Array.isArray(availableDays) && Array.isArray(timeSlots)) {
     availability = availableDays.map((d) => ({ day: d, slots: timeSlots }));
